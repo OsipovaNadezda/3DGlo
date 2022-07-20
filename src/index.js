@@ -1,6 +1,8 @@
 import timer from './modules/timer';
+import menu from './modules/menu';
 
-timer('21 July 2022');
+timer('20 July 2022');
+menu();
 
 
 
