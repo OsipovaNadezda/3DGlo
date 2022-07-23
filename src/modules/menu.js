@@ -4,7 +4,8 @@ const menu = () => {
     const closeMenuBtn = menu.querySelector(".close-btn");
     const menuItems = menu.querySelectorAll("ul>li>a");
 
-    const handleMenu = () => {
+    const handleMenu = (event) => {
+        event.preventDefault();
         // if (!menu.style.transform) {
         //     menu.style.transform = "translateX(0)";
         // } else {
