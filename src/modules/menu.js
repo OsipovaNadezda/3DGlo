@@ -3,6 +3,9 @@ const menu = () => {
     const menu = document.querySelector("menu");
     const closeMenuBtn = menu.querySelector(".close-btn");
     const menuItems = menu.querySelectorAll("ul>li>a");
+    const main = document.querySelector("main");
+    const scrollBnt = main.querySelector("a");
+
 
     const handleMenu = (event) => {
         event.preventDefault();
@@ -18,6 +21,18 @@ const menu = () => {
     closeMenuBtn.addEventListener('click', handleMenu);
 
     menuItems.forEach(menuItem => menuItem.addEventListener('click', handleMenu));
+
+    scrollBnt.addEventListener('click', (e) => {
+        e.preventDefault();
+        const el = e.target.closest('a').getAttribute('href').substr(1);
+       
+        document.getElementById(el).scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
+    });
+
+
 };
 
 export default menu;
