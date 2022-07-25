@@ -22,18 +22,23 @@ const modal = () => {
 
         const screenWidth = window.innerWidth;
         modal.style.display = 'block';
-    
+
         if (screenWidth > 768) {
             flyAminate();
         }
     });
 
-    popupClose.addEventListener('click', () => {
-        modal.style.display = 'none';
+    // popupClose.addEventListener('click', () => {
+    // 
+    //     //popupContent.style.left ='';
+    // });
 
-        popupContent.style.top = "0%";
-        count = 0;
-        //popupContent.style.left ='';
+    modal.addEventListener('click', (e) => {
+        if (!e.target.closest('.popup-content') || e.target.classList.contains('popup-close')) {
+            modal.style.display = 'none';
+            popupContent.style.top = "0%";
+            count = 0;
+        }
     });
 
 };
