@@ -2,7 +2,6 @@ const modal = () => {
     const popupBtn = document.querySelector('.popup-btn');
     const modal = document.querySelector('.popup');
     const popupContent = modal.querySelector('.popup-content');
-    const popupClose = modal.querySelector('.popup-close');
     let count = 0;
     let idInterval;
 
@@ -11,7 +10,6 @@ const modal = () => {
 
         if (count < 11) {
             popupContent.style.top = count + '%';
-            // popupContent.style.left = count * 5 + 'px';
             idInterval = requestAnimationFrame(flyAminate);
         } else {
             cancelAnimationFrame(idInterval);
@@ -27,11 +25,6 @@ const modal = () => {
             flyAminate();
         }
     });
-
-    // popupClose.addEventListener('click', () => {
-    // 
-    //     //popupContent.style.left ='';
-    // });
 
     modal.addEventListener('click', (e) => {
         if (!e.target.closest('.popup-content') || e.target.classList.contains('popup-close')) {
