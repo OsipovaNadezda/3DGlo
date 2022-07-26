@@ -6,33 +6,33 @@ const menu = () => {
     const main = document.querySelector("main");
     const scrollBnt = main.querySelector("a");
 
+    // const handleMenu = (event) => {
+    //     event.preventDefault();
 
-    const handleMenu = (event) => {
-        event.preventDefault();
-        // if (!menu.style.transform) {
-        //     menu.style.transform = "translateX(0)";
-        // } else {
-        //     menu.style.transform = "";
-        // }
-        menu.classList.toggle('active-menu')
-    };
-    menuBtn.addEventListener('click', handleMenu);
+    //     menu.classList.toggle('active-menu')
+    // };
+    // menuBtn.addEventListener('click', handleMenu);
 
-    closeMenuBtn.addEventListener('click', handleMenu);
+     menuBtn.addEventListener('click', ()=>{
+        menu.classList.toggle('active-menu');
+     });
 
-    menuItems.forEach(menuItem => menuItem.addEventListener('click', handleMenu));
+    menu.addEventListener('click', (e) => {
+        if (e.target.classList.contains("close-btn") || e.target.closest('ul>li>a')) {
+            e.preventDefault();
+            menu.classList.toggle('active-menu');
+        }
+    });
 
     scrollBnt.addEventListener('click', (e) => {
         e.preventDefault();
         const el = e.target.closest('a').getAttribute('href').substr(1);
-       
+
         document.getElementById(el).scrollIntoView({
             behavior: 'smooth',
             block: 'start'
         });
     });
-
-
 };
 
 export default menu;
