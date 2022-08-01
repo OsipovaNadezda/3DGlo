@@ -1,20 +1,11 @@
+import {
+    animate
+} from './helpers';
+
 const modal = () => {
     const popupBtn = document.querySelector('.popup-btn');
     const modal = document.querySelector('.popup');
     const popupContent = modal.querySelector('.popup-content');
-    let count = 0;
-    let idInterval;
-
-    const flyAminate = () => {
-        count += 0.5;
-
-        if (count < 11) {
-            popupContent.style.top = count + '%';
-            idInterval = requestAnimationFrame(flyAminate);
-        } else {
-            cancelAnimationFrame(idInterval);
-        }
-    };
 
     popupBtn.addEventListener('click', () => {
 
@@ -22,15 +13,23 @@ const modal = () => {
         modal.style.display = 'block';
 
         if (screenWidth > 768) {
-            flyAminate();
+
+            setTimeout(animate({
+                duration: 1000,
+                timing(timeFraction) {
+                    return timeFraction;
+                },
+                draw(progress) {
+                    popupContent.style.left = (progress * 38) + '%';
+                    popupContent.style.top = (progress * 10) + '%';
+                }
+            }), 1500);
         }
     });
 
     modal.addEventListener('click', (e) => {
         if (!e.target.closest('.popup-content') || e.target.classList.contains('popup-close')) {
             modal.style.display = 'none';
-            popupContent.style.top = "0%";
-            count = 0;
         }
     });
 
