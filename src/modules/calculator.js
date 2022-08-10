@@ -29,8 +29,6 @@ const calculator = (price = 100) => {
         } else {
             totalValue = 0;
         }
-
-
         total.textContent = totalValue;
     };
 
@@ -38,7 +36,7 @@ const calculator = (price = 100) => {
 
         if (e.target === calcType || e.target === calcSquare ||
             e.target === calcCount || e.target === calcDay) {
-            countCalc();
+            countCalc(100);
         }
         // console.log(e.target);
     });
