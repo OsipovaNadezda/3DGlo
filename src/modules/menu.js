@@ -5,6 +5,7 @@ const menu = () => {
     const menuItems = menu.querySelectorAll("ul>li>a");
     const main = document.querySelector("main");
     const scrollBnt = main.querySelector("a");
+    const activeMenu = menu.querySelector('.active-menu')
 
     // const handleMenu = (event) => {
     //     event.preventDefault();
@@ -13,12 +14,13 @@ const menu = () => {
     // };
     // menuBtn.addEventListener('click', handleMenu);
 
-     menuBtn.addEventListener('click', ()=>{
-        menu.classList.toggle('active-menu');
-     });
-
-    menu.addEventListener('click', (e) => {
-        if (e.target.classList.contains("close-btn") || e.target.closest('ul>li>a')) {
+//     menuBtn.addEventListener('click', ()=>{
+//menu.classList.toggle('active-menu');
+    // });
+// 
+    document.body.addEventListener('click', (e) => {
+//debugger
+        if (e.target.classList.contains("close-btn") || e.target.closest('ul>li>a') || !e.target.closest('menu')) {
             e.preventDefault();
             menu.classList.toggle('active-menu');
         }
